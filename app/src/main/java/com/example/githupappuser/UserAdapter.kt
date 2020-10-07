@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserAdapter internal constructor(private val context: Context) : BaseAdapter() {
@@ -35,7 +36,9 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
             with(view) {
                 txt_name.text = user.name
                 txt_lokasi.text = user.location
-                img_avatar.setImageResource(user.avatar)
+                Glide.with(this)
+                    .load(user.avatar)
+                    .into(img_avatar)
             }
         }
     }

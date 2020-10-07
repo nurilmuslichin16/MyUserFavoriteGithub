@@ -9,7 +9,6 @@
     tools:context=".UserDetail">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="100dp"
@@ -34,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:id="@+id/tv_username_detail"
-        android:text="username_detail"
+        android:text="@string/username_detail"
         android:textSize="14sp"
         android:gravity="center"/>
 
@@ -54,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_repository_detail"
-                android:text="10"
+                android:text="@string/count_repository"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:gravity="center"/>
@@ -78,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_followers_detail"
-                android:text="209"
+                android:text="@string/count_followers"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:gravity="center"/>
@@ -102,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_following_detail"
-                android:text="48"
+                android:text="@string/count_following"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:gravity="center"/>

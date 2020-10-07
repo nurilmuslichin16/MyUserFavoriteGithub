@@ -8,6 +8,11 @@
     <string name="following">Following</string>
     <string name="company">Company</string>
     <string name="location">Location</string>
+    <string name="username_detail">username_detail</string>
+    <string name="count_repository">10</string>
+    <string name="count_followers">209</string>
+    <string name="count_following">48</string>
+    <string name="title_splash">Github User App</string>
 
     <string-array name="username">
         <item>nurilmuslichin16</item>

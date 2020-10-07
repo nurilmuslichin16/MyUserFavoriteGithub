@@ -2,6 +2,7 @@ package com.example.githupappuser
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_user_detail.*
 
 class UserDetail : AppCompatActivity() {
@@ -18,7 +19,9 @@ class UserDetail : AppCompatActivity() {
 
         val user = intent.getParcelableExtra<User>(EXTRA_USER) as User
 
-        img_avatar_detail.setImageResource(user.avatar)
+        Glide.with(this)
+            .load(user.avatar)
+            .into(img_avatar_detail)
         tv_nama_detail.text = user.name
         tv_username_detail.text = user.username
         tv_repository_detail.text = user.repository.toString()
