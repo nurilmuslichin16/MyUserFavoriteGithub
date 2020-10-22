@@ -19,7 +19,8 @@
             android:layout_height="300dp"
             android:src="@drawable/github"
             android:scaleType="fitCenter"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/logo_github"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -36,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Create by Nuril Muslichin"
+        android:text="@string/created_by"
         android:layout_alignParentBottom="true"
         android:gravity="center"/>
 

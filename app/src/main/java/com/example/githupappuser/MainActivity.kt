@@ -1,10 +1,10 @@
 package com.example.githupappuser
 
-import android.content.Intent
 import android.content.res.TypedArray
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AdapterView
+import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,20 +26,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = UserAdapter(this)
-        lv_user.adapter = adapter
+        adapter = UserAdapter()
+        adapter.notifyDataSetChanged()
+
+        lay_list_users.layoutManager = LinearLayoutManager(this)
+        lay_list_users.adapter = adapter
 
         prepare()
         addItem()
+    }
 
-        lv_user.onItemClickListener = AdapterView.OnItemClickListener {_, _, position, _ ->
-            val pindahDetail = Intent(this@MainActivity, UserDetail::class.java)
-            pindahDetail.putExtra(UserDetail.EXTRA_USER, users[position])
-            startActivity(pindahDetail)
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            progress_bar.visibility = View.VISIBLE
+        } else {
+            progress_bar.visibility = View.GONE
         }
     }
 
     private fun prepare() {
+        showLoading(true)
         dataUsername = resources.getStringArray(R.array.username)
         dataName = resources.getStringArray(R.array.name)
         dataLokasi = resources.getStringArray(R.array.location)
@@ -64,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             )
             users.add(user)
         }
-        adapter.users = users
+        adapter.uData = users
+        showLoading(false)
     }
 }

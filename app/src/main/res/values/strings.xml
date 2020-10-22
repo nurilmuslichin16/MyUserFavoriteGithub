@@ -6,13 +6,16 @@
     <string name="repository">Repository</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
-    <string name="company">Company</string>
     <string name="location">Location</string>
     <string name="username_detail">username_detail</string>
     <string name="count_repository">10</string>
     <string name="count_followers">209</string>
     <string name="count_following">48</string>
     <string name="title_splash">Github User App</string>
+    <string name="company">Company</string>
+    <string name="hint_search">Masukkan username github</string>
+    <string name="created_by">Create by Nuril Muslichin</string>
+    <string name="logo_github">Logo Github</string>
 
     <string-array name="username">
         <item>nurilmuslichin16</item>

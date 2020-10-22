@@ -1,39 +1,39 @@
 package com.example.githupappuser
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_user.view.*
 
-class UserAdapter internal constructor(private val context: Context) : BaseAdapter() {
-    internal var users = arrayListOf<User>()
+class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    override fun getCount(): Int = users.size
+    internal var uData = arrayListOf<User>()
 
-    override fun getItem(i: Int): Any = users[i]
-
-    override fun getItemId(i: Int): Long = i.toLong()
-
-    override fun getView(position: Int, view: View?, viewGroup: ViewGroup?): View {
-        var itemView = view
-
-        if (itemView == null) {
-            itemView = LayoutInflater.from(context).inflate(R.layout.item_user, viewGroup, false)
-        }
-
-        val viewHolder = ViewHolder(itemView as View)
-
-        val user = getItem(position) as User
-        viewHolder.bind(user)
-        return itemView
+    fun setData(items: ArrayList<User>) {
+        uData.clear()
+        uData.addAll(items)
+        notifyDataSetChanged()
     }
 
-    private inner class ViewHolder internal constructor(private val view: View) {
-        internal fun bind(user: User) {
-            with(view) {
+    override fun onCreateViewHolder(
+        viewGroup: ViewGroup,
+        viewType: Int
+    ): UserAdapter.UserViewHolder {
+        val mView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_user, viewGroup, false)
+        return UserViewHolder(mView)
+    }
+
+    override fun onBindViewHolder(holder: UserAdapter.UserViewHolder, position: Int) {
+        holder.bind(uData[position])
+    }
+
+    override fun getItemCount(): Int = uData.size
+
+    inner class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        fun bind(user: User) {
+            with(itemView) {
                 txt_name.text = user.name
                 txt_lokasi.text = user.location
                 Glide.with(this)
@@ -42,4 +42,5 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
             }
         }
     }
+
 }
