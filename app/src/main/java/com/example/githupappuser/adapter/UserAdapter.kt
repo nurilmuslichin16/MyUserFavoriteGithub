@@ -1,45 +1,48 @@
-package com.example.githupappuser
+package com.example.githupappuser.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.githupappuser.R
+import com.example.githupappuser.model.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    private var uData = arrayListOf<User>()
+    private var listData = ArrayList<User>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
     fun setData(items: ArrayList<User>) {
-        uData.clear()
-        uData.addAll(items)
+        listData.clear()
+        listData.addAll(items)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
-    ): UserAdapter.UserViewHolder {
+    ): UserViewHolder {
         val mView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_user, viewGroup, false)
         return UserViewHolder(mView)
     }
 
-    override fun onBindViewHolder(holder: UserAdapter.UserViewHolder, position: Int) {
-        holder.bind(uData[position])
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+        holder.bind(listData[position])
     }
 
-    override fun getItemCount(): Int = uData.size
+    override fun getItemCount(): Int = listData.size
 
     inner class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(user: User) {
             with(itemView) {
-                txt_name.text = user.username
                 Glide.with(this)
                     .load(user.avatar)
                     .into(img_avatar)
+                txt_name.text = user.username
+                txt_link.text = user.url
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(user) }
             }

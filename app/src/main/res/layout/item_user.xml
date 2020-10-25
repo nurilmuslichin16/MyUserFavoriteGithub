@@ -21,23 +21,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/img_avatar"
+        app:layout_constraintBottom_toTopOf="@id/txt_link"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="3dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
         android:text="@string/nama_user"
         android:textSize="18sp"
         android:textStyle="bold"
         android:id="@+id/txt_name"/>
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="10dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/img_avatar"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txt_name"-->
-<!--        android:ellipsize="end"-->
-<!--        android:text="@string/company"-->
-<!--        android:id="@+id/txt_company"/>-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/img_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name"
+        android:ellipsize="end"
+        android:text="@string/link"
+        android:id="@+id/txt_link"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

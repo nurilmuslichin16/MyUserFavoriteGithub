@@ -1,4 +1,4 @@
-package com.example.githupappuser
+package com.example.githupappuser.view
 
 import android.app.SearchManager
 import android.content.Context
@@ -13,7 +13,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.loopj.android.http.AsyncHttpClient
+import com.example.githupappuser.viewModel.MainViewModel
+import com.example.githupappuser.R
+import com.example.githupappuser.adapter.UserAdapter
+import com.example.githupappuser.model.User
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,23 +31,27 @@ class MainActivity : AppCompatActivity() {
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
 
+        showRecyclerList()
+
+        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+
+        mainViewModel.getUsers().observe(this, Observer { userItems ->
+            if (userItems != null) {
+                adapter.setData(userItems)
+                showLoading(false)
+            } else {
+                Toast.makeText(this, "Data Kosong", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun showRecyclerList() {
         lay_list_users.layoutManager = LinearLayoutManager(this)
         lay_list_users.adapter = adapter
 
         adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
             override fun onItemClicked(data: User) {
                 showSelectedUser(data)
-            }
-        })
-
-        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
-
-        adapter.setData(mainViewModel.firstItem(this))
-
-        mainViewModel.getUsers().observe(this, Observer { userItems ->
-            if (userItems != null) {
-                adapter.setData(userItems)
-                showLoading(false)
             }
         })
     }

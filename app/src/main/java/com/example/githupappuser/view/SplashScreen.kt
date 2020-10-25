@@ -1,10 +1,10 @@
-package com.example.githupappuser
+package com.example.githupappuser.view
 
-import android.R.id.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.example.githupappuser.R
 
 
 class SplashScreen : AppCompatActivity() {

@@ -1,8 +1,10 @@
-package com.example.githupappuser
+package com.example.githupappuser.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.githupappuser.R
+import com.example.githupappuser.model.User
 import kotlinx.android.synthetic.main.activity_user_detail.*
 
 class UserDetail : AppCompatActivity() {
