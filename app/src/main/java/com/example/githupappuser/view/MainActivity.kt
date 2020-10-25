@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -38,9 +39,10 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getUsers().observe(this, Observer { userItems ->
             if (userItems.size > 0) {
                 adapter.setData(userItems)
+                ll_image_search.visibility = View.GONE
                 showLoading(false)
             } else {
-                Toast.makeText(this@MainActivity, "Data Kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, R.string.username_not_found, Toast.LENGTH_SHORT).show()
                 showLoading(false)
             }
         })
@@ -65,10 +67,9 @@ class MainActivity : AppCompatActivity() {
         val searchView = menu?.findItem(R.id.search)?.actionView as SearchView
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        searchView.queryHint = resources.getString(R.string.cari_hint)
+        searchView.queryHint = resources.getString(R.string.hint_search)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(this@MainActivity, query, Toast.LENGTH_SHORT).show()
                 getDataUserFromApi(query)
                 return true
             }
@@ -84,11 +85,12 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.localization -> {
-                Toast.makeText(this, "Menu Localization on click", Toast.LENGTH_SHORT).show()
-                return true
+                val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(mIntent)
             }
             else -> return false
         }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun showSelectedUser(user: User) {

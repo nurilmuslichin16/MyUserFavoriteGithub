@@ -10,14 +10,29 @@
         android:layout_height="match_parent"
         android:id="@+id/lay_list_followers" />
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateTint="@color/colorPrimaryDark"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyle"
-        android:visibility="gone" />
+    <LinearLayout
+        android:id="@+id/ll_image_followers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/undraw_no_data"
+            android:contentDescription="@string/cd_image_search" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nothing_followed"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

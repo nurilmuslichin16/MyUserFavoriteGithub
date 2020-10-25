@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pengguna Github</string>
+    <string name="nama_user">Username</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="nama_detail">Nama</string>
+    <string name="repository">Repository</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="location">Lokasi</string>
+    <string name="username_detail">Username</string>
+    <string name="count_repository">10</string>
+    <string name="count_followers">209</string>
+    <string name="count_following">48</string>
+    <string name="title_splash">Github User App</string>
+    <string name="link">Link Github</string>
+    <string name="hint_search">Username github</string>
+    <string name="created_by">Dibuat oleh Nuril Muslichin</string>
+    <string name="logo_github">Logo Github</string>
+    <string name="change_language">Ubah Pengaturan Bahasa</string>
+    <string name="cari">Cari</string>
+    <string name="avatar_user">Avatar User</string>
+    <string name="company">Perusahaan</string>
+    <string name="username_not_found">Username tidak ditemukan</string>
+    <string name="followers_blank">Followers Kosong</string>
+    <string name="following_blank">Following Kosong</string>
+    <string name="title_search">Silahkan lakukan pencarian!</string>
+    <string name="text_search">Hasil akan terupdate otomatis</string>
+    <string name="cd_image_search">Gambar Ilustrasi Pencarian</string>
+    <string name="nothing_followed">Tidak Ada Pengikut</string>
+    <string name="nothing_following">Tidak Ada Yang Diikuti</string>
+</resources>
+
+

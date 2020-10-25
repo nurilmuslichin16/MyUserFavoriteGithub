@@ -31,7 +31,6 @@ class FollowersViewModel: ViewModel() {
                 responseBody: ByteArray
             ) {
                 val result = String(responseBody)
-                Log.d("MainViewModel", "onSuccess: $result")
                 try {
                     val responseArray = JSONArray(result)
                     for (i in 0 until responseArray.length()) {

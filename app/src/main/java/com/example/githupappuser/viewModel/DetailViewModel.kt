@@ -32,11 +32,14 @@ class DetailViewModel: ViewModel() {
                     val responseObject = JSONObject(result)
                     val user = User()
                     user.name = responseObject.getString("name")
+                    if (user.name == "null") user.name = "-" else user.name = user.name
                     user.repository = responseObject.getInt("public_repos")
                     user.followers = responseObject.getInt("followers")
                     user.following = responseObject.getInt("following")
                     user.company = responseObject.getString("company")
+                    if (user.company == "null") user.company = "-" else user.company = user.company
                     user.location = responseObject.getString("location")
+                    if (user.location == "null") user.location = "-" else user.location = user.location
                     detailUser.postValue(user)
                 } catch (e: Exception) {
                     Log.d("DetailViewModel", "On Success: ${e.message.toString()}")
