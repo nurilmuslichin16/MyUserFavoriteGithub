@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#373a40</color>
     <color name="colorAccent">#eeeeee</color>
     <color name="backgroundDetail">#ebebeb</color>
+    <color name="backgroundTabDetail">#494D53</color>
 </resources>

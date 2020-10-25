@@ -8,7 +8,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.githupappuser.R
+import com.example.githupappuser.adapter.SectionsPagerAdapter
 import com.example.githupappuser.model.User
+import com.example.githupappuser.view.fragment.FollowersFragment
+import com.example.githupappuser.view.fragment.FollowingFragment
 import com.example.githupappuser.viewModel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_user_detail.*
@@ -56,7 +59,20 @@ class UserDetail : AppCompatActivity() {
             showLoading(false)
         })
 
+        val sectionPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        sectionPagerAdapter.setData(userDetail.username)
+        vp_detail.adapter = sectionPagerAdapter
+        tab_layout.setupWithViewPager(vp_detail)
+        supportActionBar?.elevation = 0f
 
+//        val bundle = Bundle()
+//        val followersFragment = FollowersFragment()
+//        bundle.putString(FollowersFragment.EXTRA_FOLLOWERS, userDetail.username)
+//        followersFragment.arguments = bundle
+//
+//        val followingFragment = FollowingFragment()
+//        bundle.putString(FollowingFragment.EXTRA_FOLLOWING, userDetail.username)
+//        followingFragment.arguments = bundle
     }
 
     private fun showLoading(state: Boolean) {

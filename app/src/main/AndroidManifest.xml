@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.MainActivity" android:launchMode="singleTop" />
         <activity android:name=".view.UserDetail" android:parentActivityName=".view.MainActivity" />
     </application>
 

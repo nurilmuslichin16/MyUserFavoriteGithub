@@ -8,15 +8,18 @@ import com.example.githupappuser.model.User
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
-import org.json.JSONObject
+import org.json.JSONArray
 import java.lang.Exception
 
-class DetailViewModel: ViewModel() {
-    private val detailUser = MutableLiveData<User>()
+class FollowersViewModel: ViewModel() {
 
-    fun setDetailUser(username: String) {
+    private val listFollowers = MutableLiveData<ArrayList<User>>()
+
+    fun setFollowersUser(username: String) {
+        val listItem = ArrayList<User>()
+
         val apiKey = "dec01f000ba2ef1fd72fdee45490e49f4b855e20"
-        val url = "https://api.github.com/users/$username"
+        val url = "https://api.github.com/users/$username/followers"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")
@@ -28,18 +31,20 @@ class DetailViewModel: ViewModel() {
                 responseBody: ByteArray
             ) {
                 val result = String(responseBody)
+                Log.d("MainViewModel", "onSuccess: $result")
                 try {
-                    val responseObject = JSONObject(result)
-                    val user = User()
-                    user.name = responseObject.getString("name")
-                    user.repository = responseObject.getInt("public_repos")
-                    user.followers = responseObject.getInt("followers")
-                    user.following = responseObject.getInt("following")
-                    user.company = responseObject.getString("company")
-                    user.location = responseObject.getString("location")
-                    detailUser.postValue(user)
+                    val responseArray = JSONArray(result)
+                    for (i in 0 until responseArray.length()) {
+                        val responseObject = responseArray.getJSONObject(i)
+                        val user = User()
+                        user.avatar = responseObject.getString("avatar_url")
+                        user.username = responseObject.getString("login")
+                        user.url = responseObject.getString("html_url")
+                        listItem.add(user)
+                    }
+                    listFollowers.postValue(listItem)
                 } catch (e: Exception) {
-                    Log.d("DetailViewModel", "On Success: ${e.message.toString()}")
+                    Log.d("FollowersViewModel", "On Success: ${e.message.toString()}")
                 }
             }
 
@@ -49,7 +54,7 @@ class DetailViewModel: ViewModel() {
                 responseBody: ByteArray?,
                 error: Throwable?
             ) {
-                Log.d("DetailViewModel", "On Failure: ${error?.message.toString()}")
+                Log.d("FollowersViewModel", "On Failure: ${error?.message.toString()}")
 
                 val message = when(statusCode) {
                     401 -> "$statusCode : Bad Request"
@@ -58,12 +63,12 @@ class DetailViewModel: ViewModel() {
                     else -> "$statusCode : Check Your Connectivity"
                 }
 
-                Log.d("DetailViewModel", message)
+                Log.d("FollowersViewModel", message)
             }
         })
     }
 
-    fun getDetailUser(): LiveData<User> {
-        return detailUser
+    fun getFollowersUser(): LiveData<ArrayList<User>> {
+        return listFollowers
     }
 }
