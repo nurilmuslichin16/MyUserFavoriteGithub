@@ -1,7 +1,6 @@
 package com.example.githupappuser.viewModel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,15 +11,12 @@ import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 import java.lang.Exception
 
-class MainViewModel: ViewModel() {
+class DetailViewModel: ViewModel() {
+    private val detailUser = MutableLiveData<User>()
 
-    private val listUsers = MutableLiveData<ArrayList<User>>()
-
-    fun setUsers(username: String) {
-        val listItems = ArrayList<User>()
-
+    fun setDetailUser(username: String) {
         val apiKey = "dec01f000ba2ef1fd72fdee45490e49f4b855e20"
-        val url = "https://api.github.com/search/users?q=$username"
+        val url = "https://api.github.com/users/$username"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")
@@ -32,20 +28,19 @@ class MainViewModel: ViewModel() {
                 responseBody: ByteArray
             ) {
                 val result = String(responseBody)
+                Log.d("MainViewModel", "onSuccess: $result")
                 try {
                     val responseObject = JSONObject(result)
-                    val listArray = responseObject.getJSONArray("items")
-                    for (i in 0 until listArray.length()) {
-                        val item = listArray.getJSONObject(i)
-                        val user = User()
-                        user.avatar = item.getString("avatar_url")
-                        user.username = item.getString("login")
-                        user.url = item.getString("html_url")
-                        listItems.add(user)
-                    }
-                    listUsers.postValue(listItems)
+                    val user = User()
+                    user.name = responseObject.getString("name")
+                    user.repository = responseObject.getInt("public_repos")
+                    user.followers = responseObject.getInt("followers")
+                    user.following = responseObject.getInt("following")
+                    user.company = responseObject.getString("company")
+                    user.location = responseObject.getString("location")
+                    detailUser.postValue(user)
                 } catch (e: Exception) {
-                    Log.d("MainViewModel", "On Success: ${e.message.toString()}")
+                    Log.d("DetailViewModel", "On Success: ${e.message.toString()}")
                 }
             }
 
@@ -55,21 +50,21 @@ class MainViewModel: ViewModel() {
                 responseBody: ByteArray?,
                 error: Throwable?
             ) {
-                Log.d("MainViewModel", "On Failure: ${error?.message.toString()}")
+                Log.d("DetailViewModel", "On Failure: ${error?.message.toString()}")
 
-                val message = when (statusCode) {
+                val message = when(statusCode) {
                     401 -> "$statusCode : Bad Request"
                     403 -> "$statusCode : Forbidden"
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : Check Your Connectivity"
                 }
 
-                Log.d("MainViewModel", message)
+                Log.d("DetailViewModel", message)
             }
         })
     }
 
-    fun getUsers(): LiveData<ArrayList<User>> {
-        return listUsers
+    fun getDetailUser(): LiveData<User> {
+        return detailUser
     }
 }

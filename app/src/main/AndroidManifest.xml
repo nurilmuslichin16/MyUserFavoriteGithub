@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.UserDetail" />
+        <activity android:name=".view.UserDetail" android:parentActivityName=".view.MainActivity" />
     </application>
 
 </manifest>

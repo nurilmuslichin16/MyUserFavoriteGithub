@@ -8,6 +8,7 @@
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:indeterminateTint="@color/colorPrimaryDark"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/progress_bar"

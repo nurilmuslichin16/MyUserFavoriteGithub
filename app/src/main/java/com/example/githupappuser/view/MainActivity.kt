@@ -36,11 +36,12 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
 
         mainViewModel.getUsers().observe(this, Observer { userItems ->
-            if (userItems != null) {
+            if (userItems.size > 0) {
                 adapter.setData(userItems)
                 showLoading(false)
             } else {
-                Toast.makeText(this, "Data Kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Data Kosong", Toast.LENGTH_SHORT).show()
+                showLoading(false)
             }
         })
     }

@@ -1,35 +1,69 @@
 package com.example.githupappuser.view
 
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.githupappuser.R
 import com.example.githupappuser.model.User
+import com.example.githupappuser.viewModel.DetailViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_user_detail.*
 
 class UserDetail : AppCompatActivity() {
 
+    private lateinit var detailViewModel: DetailViewModel
+
     companion object {
         const val EXTRA_USER = "extra_user"
+    }
+
+    private fun setActionBarTitle(username: String) {
+        if (supportActionBar != null) {
+            (supportActionBar as ActionBar).title = username
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_detail)
 
-        supportActionBar!!.title = "Detail User"
+        showLoading(true)
+        val userDetail = intent.getParcelableExtra<User>(EXTRA_USER) as User
 
-        val user = intent.getParcelableExtra<User>(EXTRA_USER) as User
+        setActionBarTitle(userDetail.username)
 
         Glide.with(this)
-            .load(user.avatar)
+            .load(userDetail.avatar)
             .into(img_avatar_detail)
-        tv_nama_detail.text = user.name
-        tv_username_detail.text = user.username
-        tv_repository_detail.text = user.repository.toString()
-        tv_followers_detail.text = user.followers.toString()
-        tv_following_detail.text = user.following.toString()
-        tv_company_detail.text = user.company
-        tv_location_detail.text = user.location
+        tv_username_detail.text = userDetail.username
+
+        detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
+
+        detailViewModel.setDetailUser(userDetail.username)
+        detailViewModel.getDetailUser().observe(this, Observer { user ->
+            if (user != null) {
+                tv_nama_detail.text = user.name
+                tv_repository_detail.text = user.repository.toString()
+                tv_followers_detail.text = user.followers.toString()
+                tv_following_detail.text = user.following.toString()
+                tv_company_detail.text = user.company
+                tv_location_detail.text = user.location
+            }
+            showLoading(false)
+        })
+
+
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            progress_bar_detail.visibility = View.VISIBLE
+        } else {
+            progress_bar_detail.visibility = View.GONE
+        }
     }
 }
