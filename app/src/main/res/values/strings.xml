@@ -16,6 +16,9 @@
     <string name="hint_search">Masukkan username github</string>
     <string name="created_by">Create by Nuril Muslichin</string>
     <string name="logo_github">Logo Github</string>
+    <string name="ubah_bahasa">Ubah Bahasa</string>
+    <string name="cari">Cari</string>
+    <string name="cari_hint">Masukkan username github</string>
 
     <string-array name="username">
         <item>nurilmuslichin16</item>

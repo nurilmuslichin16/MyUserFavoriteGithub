@@ -8,5 +8,5 @@ class UserItems {
     var company: String? = null
     var followers: Int = 0
     var following: Int = 0
-    var avatar: Int = 0
+    var avatar: String? = null
 }
