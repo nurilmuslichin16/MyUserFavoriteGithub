@@ -28,6 +28,7 @@
     <string name="cd_image_search">Image Search Illustration</string>
     <string name="nothing_followed">Nothing followed</string>
     <string name="nothing_following">Nothing followed</string>
+    <string name="image_chevron_right">Chevron Right</string>
 </resources>
 
 

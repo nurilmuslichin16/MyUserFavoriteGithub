@@ -10,10 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.githupappuser.R
 import com.example.githupappuser.adapter.SectionsPagerAdapter
 import com.example.githupappuser.model.User
-import com.example.githupappuser.view.fragment.FollowersFragment
-import com.example.githupappuser.view.fragment.FollowingFragment
 import com.example.githupappuser.viewModel.DetailViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_user_detail.*
 
 class UserDetail : AppCompatActivity() {

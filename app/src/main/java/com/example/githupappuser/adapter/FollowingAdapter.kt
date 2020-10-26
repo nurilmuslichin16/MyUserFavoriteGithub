@@ -23,7 +23,7 @@ class FollowingAdapter: RecyclerView.Adapter<FollowingAdapter.FollowingViewHolde
         viewGroup: ViewGroup,
         viewType: Int
     ): FollowingViewHolder {
-        val mView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_user, viewGroup, false)
+        val mView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_follow, viewGroup, false)
         return FollowingViewHolder(mView)
     }
 
