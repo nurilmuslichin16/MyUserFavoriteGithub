@@ -38,6 +38,8 @@ class FollowingAdapter: RecyclerView.Adapter<FollowingAdapter.FollowingViewHolde
             with(itemView) {
                 Glide.with(this)
                     .load(user.avatar)
+                    .placeholder(R.drawable.github)
+                    .error(R.drawable.github)
                     .into(img_avatar)
                 txt_name.text = user.username
                 txt_link.text = user.url
