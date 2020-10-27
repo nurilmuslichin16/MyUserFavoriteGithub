@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.githupappuser.BuildConfig
 import com.example.githupappuser.model.User
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -18,7 +19,7 @@ class MainViewModel: ViewModel() {
     fun setUsers(username: String) {
         val listItems = ArrayList<User>()
 
-        val apiKey = "dec01f000ba2ef1fd72fdee45490e49f4b855e20"
+        val apiKey = BuildConfig.API_KEY
         val url = "https://api.github.com/search/users?q=$username"
 
         val client = AsyncHttpClient()
