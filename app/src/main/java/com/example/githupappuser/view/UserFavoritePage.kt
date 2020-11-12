@@ -75,9 +75,11 @@ class UserFavoritePage : AppCompatActivity() {
             progress_bar_favorite.visibility = View.INVISIBLE
             val notes = deferredNotes.await()
             if (notes.size > 0) {
+                ll_image_favorite.visibility = View.GONE
                 adapter.listUsers = notes
             } else {
                 adapter.listUsers = ArrayList()
+                ll_image_favorite.visibility = View.VISIBLE
                 showSnackbarMessage(getString(R.string.snackbar_no_user_favorite))
             }
         }
