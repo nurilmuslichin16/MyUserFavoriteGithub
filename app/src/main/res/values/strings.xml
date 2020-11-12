@@ -29,6 +29,11 @@
     <string name="nothing_followed">Nothing followed</string>
     <string name="nothing_following">Nothing followed</string>
     <string name="image_chevron_right">Chevron Right</string>
+    <string name="image_user_favorite">Image User Favorite</string>
+    <string name="sub_title_favorite">There is no favorite user yet</string>
+    <string name="title_favorite">Please Select Your Favorite User</string>
+    <string name="snackbar_no_user_favorite">There are no favorite users at this time</string>
+    <string name="favorite">Favorite</string>
 </resources>
 
 

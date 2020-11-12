@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.UserFavoritePage"
+            android:parentActivityName=".view.MainActivity"
+            />
         <activity android:name=".view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity" android:launchMode="singleTop" />
-        <activity android:name=".view.UserDetail" android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.MainActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".view.UserDetail"
+            android:parentActivityName=".view.MainActivity" />
     </application>
 
 </manifest>
