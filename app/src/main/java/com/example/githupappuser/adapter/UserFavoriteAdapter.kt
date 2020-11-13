@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githupappuser.R
 import com.example.githupappuser.listener.CustomOnItemClickListener
+import com.example.githupappuser.model.User
 import com.example.githupappuser.model.UserFavorite
 import com.example.githupappuser.view.UserDetail
 import kotlinx.android.synthetic.main.item_user_favorite.view.*
@@ -62,12 +63,20 @@ class UserFavoriteAdapter(private val activity: Activity): RecyclerView.Adapter<
                     .into(img_avatar_favorite)
                 txt_name_favorite.text = user.username
                 txt_link_favorite.text = user.url
+
+                val extraUser = User()
+                extraUser.avatar = user.avatar
+                extraUser.username = user.username.toString()
+                extraUser.url = user.url
+
                 itemView.setOnClickListener(CustomOnItemClickListener(adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
                     override fun onItemClicked(view: View, position: Int) {
                         val intent = Intent(activity, UserDetail::class.java)
-                        intent.putExtra(UserDetail.EXTRA_POSITION, position)
-                        intent.putExtra(UserDetail.EXTRA_USER, user)
-                        activity.startActivityForResult(intent, UserDetail.REQUEST_UPDATE)
+                        //intent.putExtra(UserDetail.EXTRA_POSITION, position)
+                        //intent.putExtra(UserDetail.EXTRA_USER, user)
+                        //activity.startActivityForResult(intent, UserDetail.REQUEST_UPDATE)
+                        intent.putExtra(UserDetail.EXTRA_USER, extraUser)
+                        activity.startActivity(intent)
                     }
                 }))
             }
