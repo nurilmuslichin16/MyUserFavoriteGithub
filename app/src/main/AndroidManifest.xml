@@ -37,6 +37,9 @@
         <activity
             android:name=".view.UserDetail"
             android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.UserDetailFavorite"
+            android:parentActivityName=".view.UserFavoritePage" />
     </application>
 
 </manifest>

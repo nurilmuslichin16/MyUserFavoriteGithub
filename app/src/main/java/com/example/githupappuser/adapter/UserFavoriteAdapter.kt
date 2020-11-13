@@ -12,6 +12,7 @@ import com.example.githupappuser.listener.CustomOnItemClickListener
 import com.example.githupappuser.model.User
 import com.example.githupappuser.model.UserFavorite
 import com.example.githupappuser.view.UserDetail
+import com.example.githupappuser.view.UserDetailFavorite
 import kotlinx.android.synthetic.main.item_user_favorite.view.*
 
 class UserFavoriteAdapter(private val activity: Activity): RecyclerView.Adapter<UserFavoriteAdapter.UserFavoriteViewHolder>() {
@@ -71,7 +72,7 @@ class UserFavoriteAdapter(private val activity: Activity): RecyclerView.Adapter<
 
                 itemView.setOnClickListener(CustomOnItemClickListener(adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
                     override fun onItemClicked(view: View, position: Int) {
-                        val intent = Intent(activity, UserDetail::class.java)
+                        val intent = Intent(activity, UserDetailFavorite::class.java)
                         //intent.putExtra(UserDetail.EXTRA_POSITION, position)
                         //intent.putExtra(UserDetail.EXTRA_USER, user)
                         //activity.startActivityForResult(intent, UserDetail.REQUEST_UPDATE)
