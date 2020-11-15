@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -39,6 +40,8 @@ class UserDetailFavorite : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_detail)
+
+        showLoading(true)
 
         val queryId = intent.getIntExtra(EXTRA_POSITION, 0)
         uriWithId = Uri.parse(CONTENT_URI.toString() + "/" + queryId)
@@ -78,9 +81,7 @@ class UserDetailFavorite : AppCompatActivity() {
         supportActionBar?.elevation = 0f
 
         fab_add_favorite.setOnClickListener {
-            statusFavorite = !statusFavorite
-
-            checkActionButton(cursor)
+            checkActionButton(queryId)
 
             setStatusFavorite(statusFavorite)
         }
@@ -93,18 +94,21 @@ class UserDetailFavorite : AppCompatActivity() {
         } else {
             setStatusFavorite(false)
         }
-
-        showLoading(true)
     }
 
-    private fun checkActionButton(cursor: Cursor?) {
+    private fun checkActionButton(queryId: Int) {
+        val cursor = contentResolver?.query(uriWithId, null, null, null, null)
         if (cursor?.count != 0) {
+            statusFavorite = false
+
             contentResolver.delete(uriWithId, null, null)
 
             Toast.makeText(this, "Berhasil Menghapus dari Database", Toast.LENGTH_SHORT).show()
         } else {
+            statusFavorite = true
+
             val values = ContentValues()
-            values.put(ID, userDetail.id)
+            values.put(ID, queryId)
             values.put(AVATAR, userDetail.avatar)
             values.put(USERNAME, userDetail.username)
             values.put(URL, userDetail.url)
