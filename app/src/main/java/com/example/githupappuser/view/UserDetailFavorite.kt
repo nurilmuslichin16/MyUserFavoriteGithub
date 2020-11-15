@@ -34,7 +34,8 @@ class UserDetailFavorite : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_detail)
 
-        setStatusFavorite(false)
+        setStatusFavorite(true)
+
         showLoading(true)
         val userDetail = intent.getParcelableExtra<User>(EXTRA_USER) as User
 
