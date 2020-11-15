@@ -38,6 +38,7 @@ class MainViewModel: ViewModel() {
                     for (i in 0 until listArray.length()) {
                         val item = listArray.getJSONObject(i)
                         val user = User()
+                        user.id = item.getInt("id")
                         user.avatar = item.getString("avatar_url")
                         user.username = item.getString("login")
                         user.url = item.getString("html_url")

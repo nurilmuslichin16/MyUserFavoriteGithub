@@ -100,6 +100,7 @@ class MainActivity : AppCompatActivity() {
     private fun showSelectedUser(user: User) {
         val toDetail = Intent(this@MainActivity, UserDetail::class.java)
         toDetail.putExtra(UserDetail.EXTRA_USER, user)
+        toDetail.putExtra(UserDetail.EXTRA_POSITION, user.id)
         startActivity(toDetail)
     }
 

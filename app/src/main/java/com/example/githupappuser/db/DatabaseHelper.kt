@@ -7,7 +7,7 @@ import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.AVATA
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.TABLE_NAME
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.URL
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.USERNAME
-import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion._ID
+import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.ID
 
 internal class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -24,7 +24,7 @@ internal class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATAB
         private const val DATABASE_NAME = "dbgithubapp"
         private const val DATABASE_VERSION = 1
         private val SQL_CREATE_TABLE_NOTE = "CREATE TABLE $TABLE_NAME" +
-                " ($_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " ($ID INTEGER PRIMARY KEY," +
                 " $AVATAR TEXT NOT NULL," +
                 " $USERNAME TEXT NOT NULL," +
                 " $URL TEXT NOT NULL)"

@@ -4,7 +4,7 @@ import android.database.Cursor
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.AVATAR
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.URL
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.USERNAME
-import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion._ID
+import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.ID
 import com.example.githupappuser.model.UserFavorite
 
 object MappingHelper {
@@ -14,7 +14,7 @@ object MappingHelper {
 
         usersCursor?.apply {
             while (moveToNext()) {
-                val id = getInt(getColumnIndexOrThrow(_ID))
+                val id = getInt(getColumnIndexOrThrow(ID))
                 val avatar = getString(getColumnIndexOrThrow(AVATAR))
                 val username = getString(getColumnIndexOrThrow(USERNAME))
                 val url = getString(getColumnIndexOrThrow(URL))
@@ -28,7 +28,7 @@ object MappingHelper {
         var user = UserFavorite()
         notesCursor?.apply {
             moveToFirst()
-            val id = getInt(getColumnIndexOrThrow(_ID))
+            val id = getInt(getColumnIndexOrThrow(ID))
             val avatar = getString(getColumnIndexOrThrow(AVATAR))
             val username = getString(getColumnIndexOrThrow(USERNAME))
             val url = getString(getColumnIndexOrThrow(URL))
