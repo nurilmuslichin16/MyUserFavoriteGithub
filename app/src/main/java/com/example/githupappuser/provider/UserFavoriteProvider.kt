@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import android.util.Log
 import com.example.githupappuser.db.DatabaseContract.AUTHORITY
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.TABLE_NAME

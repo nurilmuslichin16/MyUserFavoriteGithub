@@ -76,7 +76,8 @@ class UserFavoriteAdapter(private val activity: Activity): RecyclerView.Adapter<
                         //intent.putExtra(UserDetail.EXTRA_POSITION, position)
                         //intent.putExtra(UserDetail.EXTRA_USER, user)
                         //activity.startActivityForResult(intent, UserDetail.REQUEST_UPDATE)
-                        intent.putExtra(UserDetail.EXTRA_USER, extraUser)
+                        intent.putExtra(UserDetailFavorite.EXTRA_USER, extraUser)
+                        intent.putExtra(UserDetailFavorite.EXTRA_POSITION, user.id)
                         activity.startActivity(intent)
                     }
                 }))
