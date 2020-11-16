@@ -34,6 +34,8 @@
     <string name="title_favorite">Please Select Your Favorite User</string>
     <string name="snackbar_no_user_favorite">There are no favorite users at this time</string>
     <string name="favorite">Favorite</string>
+    <string name="success_add_favorite">Added user to favorite list</string>
+    <string name="success_remove_favorite">Removed user from favorite list</string>
 </resources>
 
 

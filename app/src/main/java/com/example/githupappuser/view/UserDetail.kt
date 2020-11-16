@@ -21,7 +21,9 @@ import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.URL
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.USERNAME
 import com.example.githupappuser.model.User
 import com.example.githupappuser.viewModel.DetailViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_user_detail.*
+import kotlinx.android.synthetic.main.activity_user_favorite.*
 
 class UserDetail : AppCompatActivity() {
 
@@ -103,7 +105,7 @@ class UserDetail : AppCompatActivity() {
 
             contentResolver.delete(uriWithId, null, null)
 
-            Toast.makeText(this, "Berhasil Menghapus dari Database", Toast.LENGTH_SHORT).show()
+            showSnackbarMessage(getString(R.string.success_remove_favorite))
         } else {
             statusFavorite = true
 
@@ -115,7 +117,7 @@ class UserDetail : AppCompatActivity() {
 
             contentResolver.insert(CONTENT_URI, values)
 
-            Toast.makeText(this, "Berhasil Memasukkan Ke Database", Toast.LENGTH_SHORT).show()
+            showSnackbarMessage(getString(R.string.success_add_favorite))
         }
     }
 
@@ -133,6 +135,10 @@ class UserDetail : AppCompatActivity() {
         } else {
             progress_bar_detail.visibility = View.GONE
         }
+    }
+
+    private fun showSnackbarMessage(message: String) {
+        Snackbar.make(scroll_detail, message, Snackbar.LENGTH_SHORT).show()
     }
 
     companion object {

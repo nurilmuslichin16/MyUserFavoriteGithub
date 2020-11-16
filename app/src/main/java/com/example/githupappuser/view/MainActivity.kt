@@ -18,7 +18,9 @@ import com.example.githupappuser.viewModel.MainViewModel
 import com.example.githupappuser.R
 import com.example.githupappuser.adapter.UserAdapter
 import com.example.githupappuser.model.User
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_user_favorite.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 ll_image_search.visibility = View.GONE
                 showLoading(false)
             } else {
-                Toast.makeText(this@MainActivity, R.string.username_not_found, Toast.LENGTH_SHORT).show()
+                Snackbar.make(lay_list_users, R.string.username_not_found, Snackbar.LENGTH_SHORT).show()
                 showLoading(false)
             }
         })
