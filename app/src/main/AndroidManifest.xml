@@ -2,9 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.githupappuser">
 
-    <permission android:name="com.example.githupappuser.READ_DATABASE" android:protectionLevel="normal" />
-    <permission android:name="com.example.githupappuser.WRITE_DATABASE" android:protectionLevel="normal" />
+    <permission
+        android:name="com.example.githupappuser.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.example.githupappuser.WRITE_DATABASE"
+        android:protectionLevel="normal" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -13,17 +20,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver
+            android:name=".receiver.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+        <activity android:name=".view.SettingPage" />
+
         <provider
             android:name=".provider.UserFavoriteProvider"
             android:authorities="com.example.githupappuser"
             android:enabled="true"
             android:exported="true"
             android:readPermission="com.example.githupappuser.READ_DATABASE"
-            android:writePermission="com.example.githupappuser.WRITE_DATABASE"/>
+            android:writePermission="com.example.githupappuser.WRITE_DATABASE" />
 
-        <activity android:name=".view.UserFavoritePage"
-            android:parentActivityName=".view.MainActivity"
-            />
+        <activity
+            android:name=".view.UserFavoritePage"
+            android:parentActivityName=".view.MainActivity" />
         <activity android:name=".view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +54,10 @@
         <activity
             android:name=".view.UserDetailFavorite"
             android:parentActivityName=".view.UserFavoritePage" />
+
+        <receiver android:name=".receiver.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

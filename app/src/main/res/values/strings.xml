@@ -36,6 +36,14 @@
     <string name="favorite">Favorite</string>
     <string name="success_add_favorite">Added user to favorite list</string>
     <string name="success_remove_favorite">Removed user from favorite list</string>
+    <string name="id_reminder_preference">reminder_daily</string>
+    <string name="id_changelang_preference">change_language</string>
+    <string name="sumoff_reminder_preference">Reminder is disabled</string>
+    <string name="sumon_reminder_preference">Notification will appear every 9 am</string>
+    <string name="message_alarm">Good morning! Have you checked your GitHub user today?</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="toast_daily_active">Daily Reminder is Active</string>
+    <string name="toast_daily_disabled">Daily Reminder is disabled</string>
 </resources>
 
 

@@ -11,5 +11,7 @@
         android:icon="@drawable/ic_baseline_favorite_24"
         app:showAsAction="always" />
     <item android:id="@+id/localization"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_settings_24"
         android:title="@string/change_language" />
 </menu>
