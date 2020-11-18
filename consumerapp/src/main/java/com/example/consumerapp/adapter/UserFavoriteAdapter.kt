@@ -11,7 +11,6 @@ import com.example.consumerapp.R
 import com.example.consumerapp.listener.CustomOnItemClickListener
 import com.example.consumerapp.model.User
 import com.example.consumerapp.model.UserFavorite
-import com.example.consumerapp.view.UserDetail
 import com.example.consumerapp.view.UserDetailFavorite
 import kotlinx.android.synthetic.main.item_user_favorite.view.*
 

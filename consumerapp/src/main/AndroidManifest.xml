@@ -21,15 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.MainActivity"
-            android:launchMode="singleTop" >
-        </activity>
-
-        <activity android:name=".view.UserFavoritePage"
-            android:parentActivityName=".view.MainActivity" />
-
-        <activity android:name=".view.UserDetail"
-            android:parentActivityName=".view.MainActivity" />
+        <activity android:name=".view.UserFavoritePage"/>
 
         <activity android:name=".view.UserDetailFavorite"
             android:parentActivityName=".view.UserFavoritePage" />

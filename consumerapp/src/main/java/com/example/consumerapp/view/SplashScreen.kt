@@ -18,8 +18,8 @@ class SplashScreen : AppCompatActivity() {
 
         handler = Handler()
         handler.postDelayed(Runnable {
-            val pindahMain = Intent(this@SplashScreen, MainActivity::class.java)
-            startActivity(pindahMain)
+            val pindahFavorite = Intent(this@SplashScreen, UserFavoritePage::class.java)
+            startActivity(pindahFavorite)
             finish()
         }, 2000)
     }
