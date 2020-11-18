@@ -1,6 +1,8 @@
 package com.example.githupappuser.view.fragment
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.provider.Settings
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -59,6 +61,11 @@ class PreferenceFragment: PreferenceFragmentCompat(),
 
         reminderPreference = findPreference<SwitchPreference>(REMINDER) as SwitchPreference
         changePreference = findPreference<Preference>(CHANGE) as Preference
+        changePreference.setOnPreferenceClickListener {
+            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(mIntent)
+            true
+        }
     }
 
     private fun setSummaries() {

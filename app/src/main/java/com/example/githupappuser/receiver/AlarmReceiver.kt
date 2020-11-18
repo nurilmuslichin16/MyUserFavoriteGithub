@@ -8,11 +8,14 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.example.githupappuser.R
+import com.example.githupappuser.view.MainActivity
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
@@ -32,11 +35,16 @@ class AlarmReceiver : BroadcastReceiver() {
         intent.putExtra(EXTRA_MESSAGE, message)
 
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt("09"))
-        calendar.set(Calendar.MINUTE, Integer.parseInt("00"))
+        calendar.set(Calendar.HOUR_OF_DAY, 9)
+        calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)
+
+        Log.d("Calender", "setRepeatingAlarm: $calendar")
+        Log.d("Time In Millis", "setRepeatingAlarm: ${calendar.timeInMillis}")
+
         val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+
         Toast.makeText(context, context.getString(R.string.toast_daily_active), Toast.LENGTH_SHORT).show()
     }
 
@@ -53,10 +61,14 @@ class AlarmReceiver : BroadcastReceiver() {
         val CHANNEL_ID = "Channel_1"
         val CHANNEL_NAME = "AlarmManager channel"
 
+        val intent = Intent(context, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+
         val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.github)
+            .setContentIntent(pendingIntent)
+            .setSmallIcon(R.drawable.ic_username)
             .setContentTitle(title)
             .setContentText(message)
             .setColor(ContextCompat.getColor(context, android.R.color.transparent))
