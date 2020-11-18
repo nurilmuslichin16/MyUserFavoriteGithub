@@ -13,9 +13,6 @@
     <Preference
         android:title="@string/change_language"
         android:key="@string/id_changelang_preference"
-        app:iconSpaceReserved="false">
-        <intent
-            android:action="android.provider.Settings.ACTION_LOCALE_SETTINGS"/>
-    </Preference>
+        app:iconSpaceReserved="false" />
 
 </PreferenceScreen>
