@@ -50,8 +50,6 @@ class PreferenceFragment: PreferenceFragmentCompat(),
             } else {
                 alarmReceiver.cancelAlarm(requireContext())
             }
-
-
         }
     }
 
