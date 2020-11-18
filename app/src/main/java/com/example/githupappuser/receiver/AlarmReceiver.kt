@@ -39,9 +39,6 @@ class AlarmReceiver : BroadcastReceiver() {
         calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)
 
-        Log.d("Calender", "setRepeatingAlarm: $calendar")
-        Log.d("Time In Millis", "setRepeatingAlarm: ${calendar.timeInMillis}")
-
         val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
 

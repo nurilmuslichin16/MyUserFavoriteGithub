@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.provider.Settings
 import android.os.Bundle
+import androidx.core.content.res.ResourcesCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
@@ -46,10 +47,12 @@ class PreferenceFragment: PreferenceFragmentCompat(),
             val isChecked = reminderPreference.summary
 
             if (isChecked == "true") {
+                reminderPreference.icon = ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_notifications_active_24, null)
                 val title = getString(R.string.daily_reminder)
                 val message = getString(R.string.message_alarm)
                 alarmReceiver.setRepeatingAlarm(requireContext(), title, message)
             } else {
+                reminderPreference.icon = ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_notifications_24, null)
                 alarmReceiver.cancelAlarm(requireContext())
             }
         }
@@ -71,5 +74,11 @@ class PreferenceFragment: PreferenceFragmentCompat(),
     private fun setSummaries() {
         val sh = preferenceManager.sharedPreferences
         reminderPreference.summary = sh.getBoolean(REMINDER, false).toString()
+        val isChecked = reminderPreference.summary
+        if (isChecked == "true") {
+            reminderPreference.icon = ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_notifications_active_24, null)
+        } else {
+            reminderPreference.icon = ResourcesCompat.getDrawable(resources, R.drawable.ic_baseline_notifications_24, null)
+        }
     }
 }
