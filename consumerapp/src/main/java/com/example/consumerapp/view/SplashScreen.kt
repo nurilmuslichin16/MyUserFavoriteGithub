@@ -16,6 +16,8 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        supportActionBar?.title = getString(R.string.app_name)
+
         handler = Handler()
         handler.postDelayed(Runnable {
             val pindahFavorite = Intent(this@SplashScreen, UserFavoritePage::class.java)
