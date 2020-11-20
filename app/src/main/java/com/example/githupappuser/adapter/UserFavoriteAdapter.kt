@@ -73,9 +73,6 @@ class UserFavoriteAdapter(private val activity: Activity): RecyclerView.Adapter<
                 itemView.setOnClickListener(CustomOnItemClickListener(adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
                     override fun onItemClicked(view: View, position: Int) {
                         val intent = Intent(activity, UserDetailFavorite::class.java)
-                        //intent.putExtra(UserDetail.EXTRA_POSITION, position)
-                        //intent.putExtra(UserDetail.EXTRA_USER, user)
-                        //activity.startActivityForResult(intent, UserDetail.REQUEST_UPDATE)
                         intent.putExtra(UserDetailFavorite.EXTRA_USER, extraUser)
                         intent.putExtra(UserDetailFavorite.EXTRA_POSITION, user.id)
                         activity.startActivity(intent)

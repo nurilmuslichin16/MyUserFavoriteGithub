@@ -44,6 +44,8 @@
     <string name="daily_reminder">Daily Reminder</string>
     <string name="toast_daily_active">Daily Reminder is Active</string>
     <string name="toast_daily_disabled">Daily Reminder is disabled</string>
+    <string name="appwidget_text">List of User Favorites</string>
+    <string name="empty_widget">No user favorites</string>
 </resources>
 
 
