@@ -64,7 +64,7 @@ class GithubAppWidget : AppWidgetProvider() {
 
             val toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent, PendingIntent.FLAG_UPDATE_CURRENT)
             views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
-            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.layout.github_app_widget)
+
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }
