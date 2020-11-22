@@ -48,6 +48,7 @@
     <string name="appwidget_text">Daftar Pengguna Favorit</string>
     <string name="empty_widget">Tidak ada pengguna favorit</string>
     <string name="sub_username_not_found">Silahkan lakukan pencarian username lain</string>
+    <string name="button_favorite">Button Favorite</string>
 </resources>
 
 

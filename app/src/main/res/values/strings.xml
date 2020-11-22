@@ -47,6 +47,7 @@
     <string name="appwidget_text">List of User Favorites</string>
     <string name="empty_widget">No user favorites</string>
     <string name="sub_username_not_found">Please do a search for another username</string>
+    <string name="button_favorite">Button Favorite</string>
 </resources>
 
 
