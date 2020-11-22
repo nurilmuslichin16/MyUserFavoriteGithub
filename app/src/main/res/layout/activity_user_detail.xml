@@ -22,11 +22,10 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/avatar_user"
+                android:elevation="8dp"
                 android:src="@drawable/github"
                 android:id="@+id/img_avatar_detail"
-                android:layout_gravity="center"
-                app:civ_border_width="4dp"
-                app:civ_border_color="@android:color/white"/>
+                android:layout_gravity="center"/>
 
             <TextView
                 android:layout_width="match_parent"
