@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
 
+        initSearchView()
         showRecyclerList()
 
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
@@ -48,6 +49,23 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun initSearchView() {
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+
+        search.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        search.queryHint = resources.getString(R.string.hint_search)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                getDataUserFromApi(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+    }
+
     private fun showRecyclerList() {
         lay_list_users.layoutManager = LinearLayoutManager(this)
         lay_list_users.adapter = adapter
@@ -62,22 +80,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.option_menu, menu)
-
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu?.findItem(R.id.search)?.actionView as SearchView
-
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        searchView.queryHint = resources.getString(R.string.hint_search)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                getDataUserFromApi(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
 
         return true
     }
