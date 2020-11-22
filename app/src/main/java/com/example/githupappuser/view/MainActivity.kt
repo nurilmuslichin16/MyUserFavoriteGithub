@@ -16,7 +16,6 @@ import com.example.githupappuser.viewModel.MainViewModel
 import com.example.githupappuser.R
 import com.example.githupappuser.adapter.UserAdapter
 import com.example.githupappuser.model.User
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,9 +38,11 @@ class MainActivity : AppCompatActivity() {
             if (userItems.size > 0) {
                 adapter.setData(userItems)
                 ll_image_search.visibility = View.GONE
+                ll_image_search_null.visibility = View.INVISIBLE
+                lay_list_users.visibility = View.VISIBLE
                 showLoading(false)
             } else {
-                Snackbar.make(lay_list_users, R.string.username_not_found, Snackbar.LENGTH_SHORT).show()
+                ll_image_search_null.visibility = View.VISIBLE
                 showLoading(false)
             }
         })
@@ -105,6 +106,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun getDataUserFromApi(username: String) {
         if (username.isEmpty()) return
+        ll_image_search.visibility = View.GONE
+        ll_image_search_null.visibility = View.INVISIBLE
+        lay_list_users.visibility = View.INVISIBLE
         showLoading(true)
         mainViewModel.setUsers(username)
     }

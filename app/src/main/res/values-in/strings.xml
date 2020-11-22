@@ -45,6 +45,9 @@
     <string name="daily_reminder">Pengingat Setiap Hari</string>
     <string name="toast_daily_active">Pengingat Harian Aktif</string>
     <string name="toast_daily_disabled">Pengingat Harian dinonaktifkan</string>
+    <string name="appwidget_text">Daftar Pengguna Favorit</string>
+    <string name="empty_widget">Tidak ada pengguna favorit</string>
+    <string name="sub_username_not_found">Silahkan lakukan pencarian username lain</string>
 </resources>
 
 

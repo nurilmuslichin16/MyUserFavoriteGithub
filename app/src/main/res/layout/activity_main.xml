@@ -11,6 +11,38 @@
         android:id="@+id/lay_list_users" />
 
     <LinearLayout
+        android:id="@+id/ll_image_search_null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:visibility="invisible">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/undraw_no_data"
+            android:contentDescription="@string/cd_image_search" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/username_not_found"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/sub_username_not_found"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/ll_image_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
