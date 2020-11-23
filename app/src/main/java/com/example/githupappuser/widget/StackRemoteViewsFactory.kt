@@ -21,20 +21,12 @@ internal class StackRemoteViewsFactory(private val mContext: Context): RemoteVie
     private var mItemWidget = ArrayList<Bitmap>()
 
     override fun onCreate() {
+        val cursor = mContext.contentResolver.query(CONTENT_URI, null, null, null, null)
 
+        user = MappingHelper.mapCursorToArrayList(cursor)
     }
 
     override fun onDataSetChanged() {
-        val identityToken = Binder.clearCallingIdentity()
-
-        val cursor = mContext.contentResolver?.query(CONTENT_URI, null, null, null, null)
-
-        if (cursor != null) {
-            cursor.close()
-        }
-
-        user = MappingHelper.mapCursorToArrayList(cursor)
-
         for (item in user) {
             val avatar = Glide.with(mContext)
                 .asBitmap()
@@ -45,8 +37,6 @@ internal class StackRemoteViewsFactory(private val mContext: Context): RemoteVie
                 .get()
             mItemWidget.add(avatar)
         }
-
-        Binder.restoreCallingIdentity(identityToken)
     }
 
     override fun onDestroy() {
