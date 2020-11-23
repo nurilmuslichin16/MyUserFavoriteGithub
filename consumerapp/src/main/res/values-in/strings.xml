@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pengguna Github</string>
+    <string name="app_name">Konsumen Pengguna Github</string>
     <string name="nama_user">Username</string>
     <string name="lokasi">Lokasi</string>
     <string name="nama_detail">Nama</string>
@@ -11,7 +11,7 @@
     <string name="count_repository">10</string>
     <string name="count_followers">209</string>
     <string name="count_following">48</string>
-    <string name="title_splash">Github User App</string>
+    <string name="title_splash">Consumer Github User App</string>
     <string name="link">Link Github</string>
     <string name="hint_search">Username github</string>
     <string name="created_by">Dibuat oleh Nuril Muslichin</string>

@@ -11,7 +11,7 @@
     <string name="count_repository">10</string>
     <string name="count_followers">209</string>
     <string name="count_following">48</string>
-    <string name="title_splash">Github User App</string>
+    <string name="title_splash">Consumer Github User App</string>
     <string name="link">Link Github</string>
     <string name="hint_search">Github username</string>
     <string name="created_by">Create by Nuril Muslichin</string>
