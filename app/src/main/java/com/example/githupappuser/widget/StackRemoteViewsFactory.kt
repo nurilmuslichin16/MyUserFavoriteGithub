@@ -3,8 +3,6 @@ package com.example.githupappuser.widget
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.Binder
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import androidx.core.os.bundleOf
@@ -13,7 +11,6 @@ import com.example.githupappuser.R
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
 import com.example.githupappuser.helper.MappingHelper
 import com.example.githupappuser.model.UserFavorite
-import kotlinx.android.synthetic.main.item_user_favorite.view.*
 
 internal class StackRemoteViewsFactory(private val mContext: Context): RemoteViewsService.RemoteViewsFactory {
 

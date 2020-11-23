@@ -11,7 +11,6 @@ import com.example.githupappuser.R
 import com.example.githupappuser.listener.CustomOnItemClickListener
 import com.example.githupappuser.model.User
 import com.example.githupappuser.model.UserFavorite
-import com.example.githupappuser.view.UserDetail
 import com.example.githupappuser.view.UserDetailFavorite
 import kotlinx.android.synthetic.main.item_user_favorite.view.*
 

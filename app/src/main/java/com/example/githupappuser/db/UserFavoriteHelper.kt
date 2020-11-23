@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.TABLE_NAME
-import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.USERNAME
 import com.example.githupappuser.db.DatabaseContract.UserColumns.Companion.ID
 import java.sql.SQLException
 
