@@ -23,17 +23,4 @@ object MappingHelper {
         }
         return userList
     }
-
-    fun mapCursorToObject(notesCursor: Cursor?): UserFavorite {
-        var user = UserFavorite()
-        notesCursor?.apply {
-            moveToFirst()
-            val id = getInt(getColumnIndexOrThrow(ID))
-            val avatar = getString(getColumnIndexOrThrow(AVATAR))
-            val username = getString(getColumnIndexOrThrow(USERNAME))
-            val url = getString(getColumnIndexOrThrow(URL))
-            user = UserFavorite(id, avatar, username, url)
-        }
-        return user
-    }
 }

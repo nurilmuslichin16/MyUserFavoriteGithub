@@ -8,7 +8,6 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
 import android.widget.Toast
-import androidx.core.net.toUri
 import com.example.githupappuser.R
 
 /**
